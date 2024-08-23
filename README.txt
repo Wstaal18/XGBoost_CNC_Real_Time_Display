@@ -34,8 +34,8 @@ Note: The Python_Testing_Platform_All_In_One.py embodies all functions in one si
 1.  Clone the Repository: 
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Wstaal18/XGBoost_CNC_Real_Time_Display.git
+   XGBoost_CNC_Real_Time_Display
    ```
 
 2.  Set Up a Virtual Environment: 
