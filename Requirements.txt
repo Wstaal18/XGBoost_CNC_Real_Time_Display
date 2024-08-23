@@ -1,0 +1,12 @@
+numpy
+pandas
+plotly
+scikit.learn
+scikit-learn
+xgboost
+seaborn
+matplotlib
+dash
+dash-ag-grid
+dash-bootstrap-components
+psutil
