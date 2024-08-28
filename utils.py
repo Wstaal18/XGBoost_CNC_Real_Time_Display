@@ -12,7 +12,7 @@
 #visual inspection models) and returns the top 10 most important features based on their combined importance scores.
 
 from collections import Counter
-
+import sys
 def most_common(lst):
     #Return the most common element in a list and its confidence percentage."""
     data = Counter(lst)
@@ -45,3 +45,23 @@ def get_overall_top_10_features(tc_features_importances, vi_features_importances
     top_10_features = sorted_combined_importances[:10]
 
     return top_10_features
+
+
+class Tee:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            try:
+                stream.write(data)
+                stream.flush()  # Ensure it is written to the file immediately
+            except ValueError:
+                pass  # Ignore write attempts to closed streams
+
+    def flush(self):
+        for stream in self.streams:
+            try:
+                stream.flush()
+            except ValueError:
+                pass  # Ignore flush attempts on closed streams

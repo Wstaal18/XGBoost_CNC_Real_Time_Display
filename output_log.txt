@@ -1,0 +1,592 @@
+Training models...
+[0]	validation_0-logloss:0.68713
+[1]	validation_0-logloss:0.64164
+[2]	validation_0-logloss:0.58780
+[3]	validation_0-logloss:0.56771
+[4]	validation_0-logloss:0.53855
+[5]	validation_0-logloss:0.51446
+[6]	validation_0-logloss:0.48065
+[7]	validation_0-logloss:0.44909
+[8]	validation_0-logloss:0.42504
+[9]	validation_0-logloss:0.40483
+[10]	validation_0-logloss:0.38832
+[11]	validation_0-logloss:0.37522
+[12]	validation_0-logloss:0.35931
+[13]	validation_0-logloss:0.34921
+[14]	validation_0-logloss:0.34084
+[15]	validation_0-logloss:0.32741
+[16]	validation_0-logloss:0.30464
+[17]	validation_0-logloss:0.29380
+[18]	validation_0-logloss:0.28289
+[19]	validation_0-logloss:0.27352
+[20]	validation_0-logloss:0.25390
+[21]	validation_0-logloss:0.24779
+[22]	validation_0-logloss:0.23358
+[23]	validation_0-logloss:0.22726
+[24]	validation_0-logloss:0.21185
+[25]	validation_0-logloss:0.19952
+[26]	validation_0-logloss:0.19385
+[27]	validation_0-logloss:0.19005
+[28]	validation_0-logloss:0.18666
+[29]	validation_0-logloss:0.18262
+[30]	validation_0-logloss:0.17923
+[31]	validation_0-logloss:0.17349
+[32]	validation_0-logloss:0.16844
+[33]	validation_0-logloss:0.15628
+[34]	validation_0-logloss:0.14971
+[35]	validation_0-logloss:0.14754
+[36]	validation_0-logloss:0.14120
+[37]	validation_0-logloss:0.13825
+[38]	validation_0-logloss:0.13460
+[39]	validation_0-logloss:0.13287
+[40]	validation_0-logloss:0.12748
+[41]	validation_0-logloss:0.12547
+[42]	validation_0-logloss:0.12325
+[43]	validation_0-logloss:0.11993
+[44]	validation_0-logloss:0.11554
+[45]	validation_0-logloss:0.11215
+[46]	validation_0-logloss:0.10995
+[47]	validation_0-logloss:0.10613
+[48]	validation_0-logloss:0.10482
+[49]	validation_0-logloss:0.10387
+[50]	validation_0-logloss:0.10024
+[51]	validation_0-logloss:0.09575
+[52]	validation_0-logloss:0.09420
+[53]	validation_0-logloss:0.09201
+[54]	validation_0-logloss:0.08775
+[55]	validation_0-logloss:0.08700
+[56]	validation_0-logloss:0.08444
+[57]	validation_0-logloss:0.08151
+[58]	validation_0-logloss:0.08056
+[59]	validation_0-logloss:0.07842
+[60]	validation_0-logloss:0.07623
+[61]	validation_0-logloss:0.07479
+[62]	validation_0-logloss:0.07341
+[63]	validation_0-logloss:0.07256
+[64]	validation_0-logloss:0.07199
+[65]	validation_0-logloss:0.07026
+[66]	validation_0-logloss:0.06966
+[67]	validation_0-logloss:0.06925
+[68]	validation_0-logloss:0.06752
+[69]	validation_0-logloss:0.06609
+[70]	validation_0-logloss:0.06447
+[71]	validation_0-logloss:0.06401
+[72]	validation_0-logloss:0.06370
+[73]	validation_0-logloss:0.06226
+[74]	validation_0-logloss:0.06196
+[75]	validation_0-logloss:0.06084
+[76]	validation_0-logloss:0.05994
+[77]	validation_0-logloss:0.05852
+[78]	validation_0-logloss:0.05774
+[79]	validation_0-logloss:0.05712
+[80]	validation_0-logloss:0.05667
+[81]	validation_0-logloss:0.05525
+[82]	validation_0-logloss:0.05496
+[83]	validation_0-logloss:0.05405
+[84]	validation_0-logloss:0.05372
+[85]	validation_0-logloss:0.05314
+[86]	validation_0-logloss:0.05263
+[87]	validation_0-logloss:0.05240
+[88]	validation_0-logloss:0.05205
+[89]	validation_0-logloss:0.05155
+[90]	validation_0-logloss:0.05061
+[91]	validation_0-logloss:0.05020
+[92]	validation_0-logloss:0.04951
+[93]	validation_0-logloss:0.04934
+[94]	validation_0-logloss:0.04888
+[95]	validation_0-logloss:0.04835
+[96]	validation_0-logloss:0.04814
+[97]	validation_0-logloss:0.04731
+[98]	validation_0-logloss:0.04666
+[99]	validation_0-logloss:0.04650
+[0]	validation_0-logloss:0.42171
+[1]	validation_0-logloss:0.37441
+[2]	validation_0-logloss:0.33601
+[3]	validation_0-logloss:0.30155
+[4]	validation_0-logloss:0.27480
+[5]	validation_0-logloss:0.25200
+[6]	validation_0-logloss:0.23099
+[7]	validation_0-logloss:0.21527
+[8]	validation_0-logloss:0.19825
+[9]	validation_0-logloss:0.18355
+[10]	validation_0-logloss:0.17194
+[11]	validation_0-logloss:0.16138
+[12]	validation_0-logloss:0.15239
+[13]	validation_0-logloss:0.14419
+[14]	validation_0-logloss:0.13384
+[15]	validation_0-logloss:0.12761
+[16]	validation_0-logloss:0.12316
+[17]	validation_0-logloss:0.11583
+[18]	validation_0-logloss:0.11070
+[19]	validation_0-logloss:0.10506
+[20]	validation_0-logloss:0.10079
+[21]	validation_0-logloss:0.09646
+[22]	validation_0-logloss:0.09299
+[23]	validation_0-logloss:0.08818
+[24]	validation_0-logloss:0.08502
+[25]	validation_0-logloss:0.08255
+[26]	validation_0-logloss:0.07977
+[27]	validation_0-logloss:0.07743
+[28]	validation_0-logloss:0.07569
+[29]	validation_0-logloss:0.07351
+[30]	validation_0-logloss:0.06975
+[31]	validation_0-logloss:0.06756
+[32]	validation_0-logloss:0.06601
+[33]	validation_0-logloss:0.06426
+[34]	validation_0-logloss:0.06149
+[35]	validation_0-logloss:0.05901
+[36]	validation_0-logloss:0.05784
+[37]	validation_0-logloss:0.05462
+[38]	validation_0-logloss:0.05372
+[39]	validation_0-logloss:0.05268
+[40]	validation_0-logloss:0.05148
+[41]	validation_0-logloss:0.04899
+[42]	validation_0-logloss:0.04824
+[43]	validation_0-logloss:0.04755
+[44]	validation_0-logloss:0.04581
+[45]	validation_0-logloss:0.04500
+[46]	validation_0-logloss:0.04308
+[47]	validation_0-logloss:0.04170
+[48]	validation_0-logloss:0.04103
+[49]	validation_0-logloss:0.04005
+[50]	validation_0-logloss:0.03870
+[51]	validation_0-logloss:0.03799
+[52]	validation_0-logloss:0.03681
+[53]	validation_0-logloss:0.03572
+[54]	validation_0-logloss:0.03506
+[55]	validation_0-logloss:0.03383
+[56]	validation_0-logloss:0.03293
+[57]	validation_0-logloss:0.03225
+[58]	validation_0-logloss:0.03152
+[59]	validation_0-logloss:0.03087
+[60]	validation_0-logloss:0.03019
+[61]	validation_0-logloss:0.02982
+[62]	validation_0-logloss:0.02897
+[63]	validation_0-logloss:0.02799
+[64]	validation_0-logloss:0.02746
+[65]	validation_0-logloss:0.02704
+[66]	validation_0-logloss:0.02645
+[67]	validation_0-logloss:0.02591
+[68]	validation_0-logloss:0.02537
+[69]	validation_0-logloss:0.02476
+[70]	validation_0-logloss:0.02441
+[71]	validation_0-logloss:0.02366
+[72]	validation_0-logloss:0.02324
+[73]	validation_0-logloss:0.02292
+[74]	validation_0-logloss:0.02261
+[75]	validation_0-logloss:0.02231
+[76]	validation_0-logloss:0.02178
+[77]	validation_0-logloss:0.02143
+[78]	validation_0-logloss:0.02107
+[79]	validation_0-logloss:0.02072
+[80]	validation_0-logloss:0.02036
+[81]	validation_0-logloss:0.02018
+[82]	validation_0-logloss:0.01998
+[83]	validation_0-logloss:0.01973
+[84]	validation_0-logloss:0.01952
+[85]	validation_0-logloss:0.01920
+[86]	validation_0-logloss:0.01899
+[87]	validation_0-logloss:0.01868
+[88]	validation_0-logloss:0.01850
+[89]	validation_0-logloss:0.01837
+[90]	validation_0-logloss:0.01805
+[91]	validation_0-logloss:0.01782
+[92]	validation_0-logloss:0.01733
+[93]	validation_0-logloss:0.01707
+[94]	validation_0-logloss:0.01695
+[95]	validation_0-logloss:0.01675
+[96]	validation_0-logloss:0.01643
+[97]	validation_0-logloss:0.01601
+[98]	validation_0-logloss:0.01581
+[99]	validation_0-logloss:0.01566
+Starting real-time simulation...
+Running Dash app...
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8050
+Press CTRL+C to quit
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 12.1%
+Memory Usage: 70.2%
+Estimated Power Usage: 5.45 Wh
+Total Power Used So Far: 0.01 Watts
+Average CPU Usage: 12.10%
+Average Memory Usage: 70.20%
+Average Tool Condition Accuracy: 94.40%
+Average Visual Inspection Accuracy: 99.80%
+Timestamp: 2024-08-28 23:09:13
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 10.3%
+Memory Usage: 70.1%
+Estimated Power Usage: 4.64 Wh
+Total Power Used So Far: 0.01 Watts
+Average CPU Usage: 11.20%
+Average Memory Usage: 70.15%
+Average Tool Condition Accuracy: 96.60%
+Average Visual Inspection Accuracy: 99.80%
+Timestamp: 2024-08-28 23:09:14
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 10.9%
+Memory Usage: 70.0%
+Estimated Power Usage: 4.91 Wh
+Total Power Used So Far: 0.02 Watts
+Average CPU Usage: 11.10%
+Average Memory Usage: 70.10%
+Average Tool Condition Accuracy: 97.73%
+Average Visual Inspection Accuracy: 99.87%
+Timestamp: 2024-08-28 23:09:15
+127.0.0.1 - - [28/Aug/2024 23:09:16] "POST /_dash-update-component HTTP/1.1" 200 -
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 10.6%
+Memory Usage: 69.9%
+Estimated Power Usage: 4.77 Wh
+Total Power Used So Far: 0.03 Watts
+Average CPU Usage: 10.97%
+Average Memory Usage: 70.05%
+Average Tool Condition Accuracy: 97.95%
+Average Visual Inspection Accuracy: 99.90%
+Timestamp: 2024-08-28 23:09:18
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 11.1%
+Memory Usage: 69.8%
+Estimated Power Usage: 5.00 Wh
+Total Power Used So Far: 0.03 Watts
+Average CPU Usage: 11.00%
+Average Memory Usage: 70.00%
+Average Tool Condition Accuracy: 98.36%
+Average Visual Inspection Accuracy: 99.92%
+Timestamp: 2024-08-28 23:09:19
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 13.7%
+Memory Usage: 69.7%
+Estimated Power Usage: 6.16 Wh
+Total Power Used So Far: 0.04 Watts
+Average CPU Usage: 11.45%
+Average Memory Usage: 69.95%
+Average Tool Condition Accuracy: 98.63%
+Average Visual Inspection Accuracy: 99.90%
+Timestamp: 2024-08-28 23:09:20
+127.0.0.1 - - [28/Aug/2024 23:09:21] "POST /_dash-update-component HTTP/1.1" 200 -
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 15.0%
+Memory Usage: 69.6%
+Estimated Power Usage: 6.75 Wh
+Total Power Used So Far: 0.05 Watts
+Average CPU Usage: 11.96%
+Average Memory Usage: 69.90%
+Average Tool Condition Accuracy: 98.57%
+Average Visual Inspection Accuracy: 99.91%
+Timestamp: 2024-08-28 23:09:23
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 14.3%
+Memory Usage: 69.5%
+Estimated Power Usage: 6.44 Wh
+Total Power Used So Far: 0.06 Watts
+Average CPU Usage: 12.25%
+Average Memory Usage: 69.85%
+Average Tool Condition Accuracy: 98.70%
+Average Visual Inspection Accuracy: 99.92%
+Timestamp: 2024-08-28 23:09:24
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 9.0%
+Memory Usage: 69.1%
+Estimated Power Usage: 4.05 Wh
+Total Power Used So Far: 0.07 Watts
+Average CPU Usage: 11.89%
+Average Memory Usage: 69.77%
+Average Tool Condition Accuracy: 98.84%
+Average Visual Inspection Accuracy: 95.36%
+Timestamp: 2024-08-28 23:09:25
+127.0.0.1 - - [28/Aug/2024 23:09:26] "POST /_dash-update-component HTTP/1.1" 200 -
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 10.6%
+Memory Usage: 68.8%
+Estimated Power Usage: 4.77 Wh
+Total Power Used So Far: 0.07 Watts
+Average CPU Usage: 11.76%
+Average Memory Usage: 69.67%
+Average Tool Condition Accuracy: 98.42%
+Average Visual Inspection Accuracy: 95.80%
+Timestamp: 2024-08-28 23:09:28
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 10.4%
+Memory Usage: 68.7%
+Estimated Power Usage: 4.68 Wh
+Total Power Used So Far: 0.08 Watts
+Average CPU Usage: 11.64%
+Average Memory Usage: 69.58%
+Average Tool Condition Accuracy: 98.56%
+Average Visual Inspection Accuracy: 96.18%
+Timestamp: 2024-08-28 23:09:29
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 9.0%
+Memory Usage: 68.6%
+Estimated Power Usage: 4.05 Wh
+Total Power Used So Far: 0.09 Watts
+Average CPU Usage: 11.42%
+Average Memory Usage: 69.50%
+Average Tool Condition Accuracy: 98.60%
+Average Visual Inspection Accuracy: 96.50%
+Timestamp: 2024-08-28 23:09:30
+127.0.0.1 - - [28/Aug/2024 23:09:31] "POST /_dash-update-component HTTP/1.1" 200 -
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 7.9%
+Memory Usage: 68.5%
+Estimated Power Usage: 3.56 Wh
+Total Power Used So Far: 0.09 Watts
+Average CPU Usage: 11.15%
+Average Memory Usage: 69.42%
+Average Tool Condition Accuracy: 98.71%
+Average Visual Inspection Accuracy: 96.77%
+Timestamp: 2024-08-28 23:09:33
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 8.9%
+Memory Usage: 68.3%
+Estimated Power Usage: 4.01 Wh
+Total Power Used So Far: 0.10 Watts
+Average CPU Usage: 10.99%
+Average Memory Usage: 69.34%
+Average Tool Condition Accuracy: 98.79%
+Average Visual Inspection Accuracy: 93.66%
+Timestamp: 2024-08-28 23:09:34
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 8.8%
+Memory Usage: 68.3%
+Estimated Power Usage: 3.96 Wh
+Total Power Used So Far: 0.10 Watts
+Average CPU Usage: 10.84%
+Average Memory Usage: 69.27%
+Average Tool Condition Accuracy: 98.85%
+Average Visual Inspection Accuracy: 94.08%
+Timestamp: 2024-08-28 23:09:35
+127.0.0.1 - - [28/Aug/2024 23:09:36] "POST /_dash-update-component HTTP/1.1" 200 -
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 11.2%
+Memory Usage: 68.2%
+Estimated Power Usage: 5.04 Wh
+Total Power Used So Far: 0.11 Watts
+Average CPU Usage: 10.86%
+Average Memory Usage: 69.21%
+Average Tool Condition Accuracy: 98.90%
+Average Visual Inspection Accuracy: 94.45%
+Timestamp: 2024-08-28 23:09:38
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 9.5%
+Memory Usage: 68.2%
+Estimated Power Usage: 4.28 Wh
+Total Power Used So Far: 0.11 Watts
+Average CPU Usage: 10.78%
+Average Memory Usage: 69.15%
+Average Tool Condition Accuracy: 98.66%
+Average Visual Inspection Accuracy: 94.46%
+Timestamp: 2024-08-28 23:09:39
+
+--- Overall Top 10 Features ---
+Z1_ActualPosition: 0.2063
+X1_OutputCurrent: 0.2007
+Z1_CommandPosition: 0.1867
+S1_CommandVelocity: 0.1826
+S1_OutputCurrent: 0.1495
+M1_CURRENT_FEEDRATE: 0.1326
+Y1_OutputCurrent: 0.1154
+Y1_DCBusVoltage: 0.1041
+S1_DCBusVoltage: 0.0958
+X1_ActualPosition: 0.0710
+CPU Usage: 9.6%
+Memory Usage: 68.2%
+Estimated Power Usage: 4.32 Wh
+Total Power Used So Far: 0.12 Watts
+Average CPU Usage: 10.72%
+Average Memory Usage: 69.09%
+Average Tool Condition Accuracy: 98.73%
+Average Visual Inspection Accuracy: 94.77%
+Timestamp: 2024-08-28 23:09:40
+127.0.0.1 - - [28/Aug/2024 23:09:41] "POST /_dash-update-component HTTP/1.1" 200 -
