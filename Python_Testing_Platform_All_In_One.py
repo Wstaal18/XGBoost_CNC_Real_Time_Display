@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 import psutil
 import time
 from collections import Counter
+import sys
 
 ######     CREATION & PRINT FUNCTIONS ######
 ###     CREATE DASH APPLICATION LAYOUT ###
@@ -111,36 +112,6 @@ def create_gauge_chart(condition_value, inspection_value, machine_label):
     
     return fig
 
-###     CALCULATE SYSTEM STATISTICS & PRINT TO TERMINAL & DASH APPLICATION ###
-def print_system_stats(tc_model, vi_model, tc_features, vi_features):
-    CPU_TDP = 45  # Adjust this value to your CPU's TDP (e.g., 13th Gen Intel Core i7-13620H)
-
-    # Set interval to 0 to avoid unintended delays
-    cpu_usage = psutil.cpu_percent(interval=0)
-    memory_info = psutil.virtual_memory()
-
-    # Calculate the estimated power usage
-    estimated_power_usage = (cpu_usage / 100) * CPU_TDP
-
-    # Get and sort feature importances for tc_model (Tool Condition Model)
-    tc_features_importances = [(tc_features.columns[i], v) for i, v in enumerate(tc_model.feature_importances_)]
-    tc_features_importances.sort(key=lambda x: x[1], reverse=True)
-    
-    # Get and sort feature importances for vi_model (Visual Inspection Model)
-    vi_features_importances = [(vi_features.columns[i], v) for i, v in enumerate(vi_model.feature_importances_)]
-    vi_features_importances.sort(key=lambda x: x[1], reverse=True)
-
-    # Get overall top 10 features
-    overall_top_10_features = get_overall_top_10_features(tc_features_importances, vi_features_importances)
-    print(f"\n--- Overall Top 10 Features ---")
-    for feature, importance in overall_top_10_features:
-        print(f"{feature}: {importance:.4f}")
-
-    # Print system stats
-    print(f"CPU Usage: {cpu_usage}%")
-    print(f"Memory Usage: {memory_info.percent}%")
-    print(f"Estimated Power Usage: {estimated_power_usage:.2f} Watts")
-    print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 
@@ -157,6 +128,29 @@ def most_common(lst):
     confidence = count / len(lst) * 100  # Calculate confidence as a percentage
     return most_common_element, confidence
 
+
+
+def redirect_output_to_file(file_path):
+    """Redirects the terminal output to a specified text file."""
+    sys.stdout = open(file_path, 'w')
+
+def restore_output():
+    """Restores the terminal output to the default behavior."""
+    sys.stdout.close()
+    sys.stdout = sys.__stdout__
+
+class Tee:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+            stream.flush()  # Ensure it is written to the file immediately
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 ###     FIND MOST MOST IMPORTANT FEATURES FUNCTION ###
 def get_overall_top_10_features(tc_features_importances, vi_features_importances):
@@ -190,8 +184,11 @@ def get_overall_top_10_features(tc_features_importances, vi_features_importances
 
 ###     READ CHUNKS FROM RealTime_sim1,2,3 TO SIMULATE DATA SOURCES AND UPDATE GAUGE VALUES  ###
 def simulate_real_time_prediction(tc_model, vi_model, file_paths, labels, lines_per_second=100, output_interval=5):
+    global total_tc_confidence, total_vi_confidence, prediction_count
     previous_condition_value = {label: None for label in labels}
     previous_inspection_value = {label: None for label in labels}
+
+    # Initialize data iterators
     data_iters = {label: pd.read_csv(file_path, chunksize=lines_per_second * output_interval)
                   for label, file_path in zip(labels, file_paths)}
 
@@ -201,51 +198,125 @@ def simulate_real_time_prediction(tc_model, vi_model, file_paths, labels, lines_
         for label in labels:
             chunk = next(data_iters[label], None)
 
-            if chunk is not None:
-                chunk = chunk.apply(pd.to_numeric, errors='coerce')
-                chunk.fillna(0, inplace=True)
-                features = chunk.drop(columns=['Machining_Process'], errors='ignore')
+            # If chunk is None, restart the iterator for the current label
+            if chunk is None:
+                data_iters[label] = pd.read_csv(file_paths[labels.index(label)], chunksize=lines_per_second * output_interval)
+                chunk = next(data_iters[label])
 
-                # Predict using both models
-                tc_y_pred = tc_model.predict(features)
-                vi_y_pred = vi_model.predict(features)
+            chunk = chunk.apply(pd.to_numeric, errors='coerce')
+            chunk.fillna(0, inplace=True)
+            features = chunk.drop(columns=['Machining_Process'], errors='ignore')
 
-                # Transform predictions into human-readable format
-                condition_pred = ["Unworn" if pred == 0 else "Worn" for pred in tc_y_pred]
-                inspection_pred = ["Passes Visual Inspection" if pred == 0 else "Fails Visual Inspection" for pred in vi_y_pred]
+            # Predict using both models
+            tc_y_pred = tc_model.predict(features)
+            vi_y_pred = vi_model.predict(features)
 
-                # Calculate the most common prediction and confidence
-                cond_val_t, cond_confidence = most_common(condition_pred)
-                cond_val_v, inspec_confidence = most_common(inspection_pred)
+            # Transform predictions into human-readable format
+            condition_pred = ["Unworn" if pred == 0 else "Worn" for pred in tc_y_pred]
+            inspection_pred = ["Passes Visual Inspection" if pred == 0 else "Fails Visual Inspection" for pred in vi_y_pred]
 
-                # Update condition value based on predictions
-                if cond_val_t == "Unworn" and cond_val_v == "Passes Visual Inspection":
-                    condition_value = 17  # Green
-                    status_message = f"{label}: Tool is unworn and passes visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
-                elif cond_val_t == "Worn" and cond_val_v == "Passes Visual Inspection":
-                    condition_value = 50  # Amber
-                    status_message = f"{label}: Tool is worn but passes visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
-                elif cond_val_t == "Worn" and cond_val_v == "Fails Visual Inspection":
-                    condition_value = 80  # Red
-                    status_message = f"{label}: Tool is worn and fails visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
-                else:
-                    condition_value = previous_condition_value[label] if previous_condition_value[label] is not None else 50
-                    status_message = f"{label}: Error or mixed predictions occurred, using previous value."
+            # Calculate the most common prediction and confidence
+            cond_val_t, cond_confidence = most_common(condition_pred)
+            cond_val_v, inspec_confidence = most_common(inspection_pred)
 
-                inspection_value = condition_value
+            # Update global confidence accumulators and prediction count
+            total_tc_confidence += cond_confidence
+            total_vi_confidence += inspec_confidence
+            prediction_count += 1
 
-                if condition_value != 0:
-                    previous_condition_value[label] = condition_value
-                if inspection_value != 0:
-                    previous_inspection_value[label] = inspection_value
+            # Update condition value based on predictions
+            if cond_val_t == "Unworn" and cond_val_v == "Passes Visual Inspection":
+                condition_value = 17  # Green
+                status_message = f"{label}: Tool is unworn and passes visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
+            elif cond_val_t == "Worn" and cond_val_v == "Passes Visual Inspection":
+                condition_value = 50  # Amber
+                status_message = f"{label}: Tool is worn but passes visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
+            elif cond_val_t == "Worn" and cond_val_v == "Fails Visual Inspection":
+                condition_value = 80  # Red
+                status_message = f"{label}: Tool is worn and fails visual inspection. Confidence: {cond_confidence:.2f}% worn, {inspec_confidence:.2f}% visual inspection."
+            else:
+                condition_value = previous_condition_value[label] if previous_condition_value[label] is not None else 50
+                status_message = f"{label}: Error or mixed predictions occurred, using previous value."
 
-                results.append((condition_value, inspection_value, status_message, label))
+            inspection_value = condition_value
 
-                # Print system stats and top 10 features for both models
-                print_system_stats(tc_model, vi_model, features, features)
+            if condition_value != 0:
+                previous_condition_value[label] = condition_value
+            if inspection_value != 0:
+                previous_inspection_value[label] = inspection_value
+
+            results.append((condition_value, inspection_value, status_message, label))
+
+            # Print system stats and top 10 features for both models
+            print_system_stats(tc_model, vi_model, features, features)
 
         for result in results:
             yield result
+
+
+###     CALCULATE SYSTEM STATISTICS & PRINT TO TERMINAL & DASH APPLICATION ###
+###     READ CHUNKS FROM RealTime_sim1,2,3 TO SIMULATE DATA SOURCES AND UPDATE GAUGE VALUES  ###
+# Add global variables for tracking total power and usage counts
+total_power_used = 0.0
+cpu_usage_sum = 0.0
+memory_usage_sum = 0.0
+interval_count = 0
+# Add global variables for tracking total confidence and count of predictions
+total_tc_confidence = 0.0
+total_vi_confidence = 0.0
+prediction_count = 0
+CPU_TDP = 45  # Adjust this value to your CPU's TDP
+
+###     CALCULATE SYSTEM STATISTICS & PRINT TO TERMINAL & DASH APPLICATION ###
+def print_system_stats(tc_model, vi_model, tc_features, vi_features):
+    global total_power_used, cpu_usage_sum, memory_usage_sum, interval_count
+    global total_tc_confidence, total_vi_confidence, prediction_count
+    global estimated_power_usage
+    
+    interval_count += 1  # Increment the count of intervals
+
+    # Set interval to None to avoid unintended delays
+    cpu_usage = psutil.cpu_percent(interval=1)
+    memory_info = psutil.virtual_memory()
+
+    # Calculate the estimated power usage
+    estimated_power_usage = (cpu_usage / 100) * CPU_TDP  # in Watts
+    total_power_used += estimated_power_usage / 720  # Cumulative energy in Wh based on 5 sec intervals
+    cpu_usage_sum += cpu_usage  # Accumulate CPU usage for averaging
+    memory_usage_sum += memory_info.percent  # Accumulate memory usage for averaging
+
+    # Compute the average CPU and memory usage so far
+    avg_cpu_usage = cpu_usage_sum / interval_count
+    avg_memory_usage = memory_usage_sum / interval_count
+
+    # Calculate the average accuracy based on the cumulative confidence values
+    avg_tc_accuracy = total_tc_confidence / prediction_count if prediction_count > 0 else 0
+    avg_vi_accuracy = total_vi_confidence / prediction_count if prediction_count > 0 else 0
+
+    # Get and sort feature importances for tc_model (Tool Condition Model)
+    tc_features_importances = [(tc_features.columns[i], v) for i, v in enumerate(tc_model.feature_importances_)]
+    tc_features_importances.sort(key=lambda x: x[1], reverse=True)
+    
+    # Get and sort feature importances for vi_model (Visual Inspection Model)
+    vi_features_importances = [(vi_features.columns[i], v) for i, v in enumerate(vi_model.feature_importances_)]
+    vi_features_importances.sort(key=lambda x: x[1], reverse=True)
+
+    # Get overall top 10 features
+    overall_top_10_features = get_overall_top_10_features(tc_features_importances, vi_features_importances)
+    print(f"\n--- Overall Top 10 Features ---")
+    for feature, importance in overall_top_10_features:
+        print(f"{feature}: {importance:.4f}")
+
+    # Print system stats
+    print(f"CPU Usage: {cpu_usage}%")
+    print(f"Memory Usage: {memory_info.percent}%")
+    print(f"Estimated Power Usage: {estimated_power_usage:.2f} Wh")
+    print(f"Total Power Used So Far: {total_power_used:.2f} Watts")  # Changed to Wh
+    print(f"Average CPU Usage: {avg_cpu_usage:.2f}%")
+    print(f"Average Memory Usage: {avg_memory_usage:.2f}%")
+    print(f"Average Tool Condition Accuracy: {avg_tc_accuracy:.2f}%")
+    print(f"Average Visual Inspection Accuracy: {avg_vi_accuracy:.2f}%")
+    print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 
@@ -257,8 +328,6 @@ def simulate_real_time_prediction(tc_model, vi_model, file_paths, labels, lines_
      Output('system-stats-table', 'children')],
     Input('interval-component', 'n_intervals')
 )
-
-###     UPDATE/REDRAW GAUGE CHART BASED ON UPDATED VALUES###
 def update_gauge_charts(n_intervals):
     global tc_features, vi_features
     figures = []
@@ -281,17 +350,26 @@ def update_gauge_charts(n_intervals):
     feature_importance_figure = create_feature_importance_chart(overall_top_10_features)
     
     # Generate system stats
-    cpu_usage = psutil.cpu_percent(interval=0)
+    cpu_usage = psutil.cpu_percent(interval=1)  # Use a proper interval for accuracy
     memory_info = psutil.virtual_memory()
-    estimated_power_usage = (cpu_usage / 100) * 45  # Adjust this value to your CPU's TDP
+    
+    # Calculate estimated power usage
+    CPU_TDP = 45  # Adjust this value to your CPU's TDP
+    
+    # Calculate average tool condition and visual inspection accuracy
+    avg_tc_accuracy = total_tc_confidence / prediction_count if prediction_count > 0 else 0
+    avg_vi_accuracy = total_vi_confidence / prediction_count if prediction_count > 0 else 0
 
+    # Update system stats table
     system_stats.append(html.Tr([html.Td("CPU Usage"), html.Td(f"{cpu_usage}%")]))
     system_stats.append(html.Tr([html.Td("Memory Usage"), html.Td(f"{memory_info.percent}%")]))
-    system_stats.append(html.Tr([html.Td("Estimated Power Usage"), html.Td(f"{estimated_power_usage:.2f} Watts")]))
+    system_stats.append(html.Tr([html.Td("Estimated Power Usage"), html.Td(f"{estimated_power_usage:.2f} Wh")]))
+    system_stats.append(html.Tr([html.Td("Total Power Used (Wh)"), html.Td(f"{total_power_used:.2f} Watts")]))
+    system_stats.append(html.Tr([html.Td("Average Tool Condition Accuracy"), html.Td(f"{avg_tc_accuracy:.2f}%")]))
+    system_stats.append(html.Tr([html.Td("Average Visual Inspection Accuracy"), html.Td(f"{avg_vi_accuracy:.2f}%")]))
     system_stats.append(html.Tr([html.Td("Timestamp"), html.Td(time.strftime('%Y-%m-%d %H:%M:%S'))]))
 
     return figures + [terminal_output, feature_importance_figure, dbc.Table(system_stats, bordered=True, striped=True)]
-
 
 #####   MAIN FUNCTION TO CONTROL FULL CODE  #####
 def main():
@@ -312,4 +390,7 @@ def main():
     app.run_server(debug=False, port=8050)
 
 if __name__ == "__main__":
-    main()
+    # Create a log file and use the Tee class to print to both terminal and log file
+    with open("output_log.txt", "w") as log_file:
+        sys.stdout = Tee(sys.stdout, log_file)
+        main()
